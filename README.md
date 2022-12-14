@@ -30,7 +30,7 @@ enable_registry = true
 #### Init
 
 ```sh
-terraform validate
+terraform init
 ```
 
 
