@@ -14,7 +14,7 @@ provider "aws" {
   # - Disable swap
   # - Disable SELinux and AppArmor
 
-module "infrastructure" {
+module "base" {
   source = "./modules/base"
 }
 

@@ -44,7 +44,7 @@ terraform validate
 #### Plan
 
 ```sh
-terraform plan
+terraform plan -input=false
 ```
 
 
