@@ -15,6 +15,6 @@ resource "local_sensitive_file" "pem_file" {
 }
 
 resource "aws_key_pair" "key" {
-  key_name   = "aws-ssh-key"
+  key_name   = "aws-ssh-key-1"
   public_key = tls_private_key.key.public_key_openssh
 }

@@ -16,7 +16,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "node" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.large"
+  instance_type = var.aws_inst_size
   key_name      = var.aws_key_pair
   user_data     = var.cloudinit_config
 
@@ -25,8 +25,8 @@ resource "aws_instance" "node" {
   associate_public_ip_address = true
 
   root_block_device {
-    volume_size           = 20
-    volume_type           = "gp3"
+    volume_size           = var.aws_inst_vol_size
+    volume_type           = var.aws_inst_vol_type
     delete_on_termination = true
 
     tags = var.tags

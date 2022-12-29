@@ -24,6 +24,17 @@ lab_solution_password = "???????"
 enable_registry = true
 ```
 
+### EC2 PEM
+
+```sh
+aws ec2 create-key-pair \
+    --key-name ckad \
+    --key-type rsa \
+    --key-format pem \
+    --query "KeyMaterial" \
+    --output text > ~/.ssh/ckad.pem
+```
+
 
 ### Create
 
@@ -44,18 +55,23 @@ terraform validate
 #### Plan
 
 ```sh
-terraform plan -input=false
+terraform plan -input=false -var-file='./config/dev.tfvars'
 ```
 
 
 #### Apply
 
 ```sh
-terraform apply -auto-approve
+terraform apply -auto-approve -var-file='./config/dev.tfvars'
 ```
 
 
 ### Destroy
 ```sh
-terraform destroy -auto-approve
+terraform destroy -auto-approve -var-file='./config/dev.tfvars'
+```
+
+### Local Clean up
+```sh
+rm -rf .terraform && rm terraform.tfstate && rm .terraform.lock.hcl
 ```

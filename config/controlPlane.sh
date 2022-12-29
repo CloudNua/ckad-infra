@@ -30,11 +30,16 @@ taint() {
   kubectl taint nodes --all node-role.kubernetes.io/master-
 }
 
+setalias() {
+  echo "alias k="kubectl"" >> "$HOME/.bashrc"
+}
+
 main() {
   control
   worker
   kctl
   taint
+  setalias
 }
 
 main

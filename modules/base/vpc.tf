@@ -1,17 +1,17 @@
 resource "aws_vpc" "ckad" {
-  cidr_block       = "10.0.0.0/16"
-  instance_tenancy = "default"
+  cidr_block           = var.aws_vpc_cidr
+  instance_tenancy     = "default"
   enable_dns_hostnames = true
 
   tags = {
-    Name = "CKAD Training Resources"
+    Name = "CKAD Practice"
   }
 }
 
 resource "aws_subnet" "public" {
   vpc_id            = aws_vpc.ckad.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-west-2a"
+  cidr_block        = var.aws_vpc_subnet_cidr
+  availability_zone = var.aws_vpc_az_zone
 
   tags = {
     Name = "Public Subnet"

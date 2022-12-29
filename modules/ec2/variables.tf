@@ -23,3 +23,21 @@ variable "tags" {
   type        = map(any)
   default     = {}
 }
+
+variable "aws_inst_size" {
+  description = "EC2 Instance Size"
+  type        = string
+  default     = "t2.micro"
+}
+
+variable "aws_inst_vol_size" {
+  description = "EC2 Instance volume size"
+  type        = number
+  default     = "10"
+}
+
+variable "aws_inst_vol_type" {
+  description = "EC2 instance volume type"
+  type        = string
+  default     = "gp3"
+}
